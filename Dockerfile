@@ -2,15 +2,12 @@
 
 # Installs via godeb
 # Installs gcc 
-# golang.x86_64 install path is /usr/lib/golang/bin/linux_amd64
-# go binary  '/usr/lib/golang/bin/linux_amd64/go'
-# /usr/bin/go 
 # https://storage.googleapis.com/golang/go1.5.1.linux-amd64.tar.gz
 
 FROM centos:latest
 MAINTAINER sndnvaps@gmail.com
 ENV GOROOT /usr/local/go
-ENV GOROOT1.5 /usr/local/go1.5
+ENV GOROOT1_5 /usr/local/go1_5
 ENV GOBIN $GOROOT/bin 
 ENV GOROOT_BOOTSTRAP $GOROOT
 RUN yum update -y
@@ -35,8 +32,8 @@ ENV PATH $GOPATH/bin:/usr/local/go/bin:$PATH
 RUN go env 
 RUN whereis go 
 
-RUN mkdir -p $GOROOT1.5 \
-	&& cd $GOROOT1.5 \
+RUN mkdir -p $GOROOT1_5 \
+	&& cd $GOROOT1_5 \
 	&& git clone https://github.com/golang/go.git .  \
 	&& cd ./src \
 	&& CGO_ENABLED=1 ./make.bash 
