@@ -16,6 +16,9 @@ RUN yum install -y gcc
 RUN yum install -y bzr
 RUN yum install -y git 
 RUN yum install  -y golang.x86_64 
+ENV TEMP_GOBIN /root/go1.4/bin
+RUN mkdir -p $TEMP_GOBIN \
+		&& ln -s $(whereis go) $TEMP_GOBIN/go
 
 RUN mkdir -p $GOROOT \
 		&& cd $GOROOT \
