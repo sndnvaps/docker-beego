@@ -44,5 +44,4 @@ RUN mkdir -p $GOROOT1.5 \
 	&& CGO_ENABLED=1 ./make.bash 
 
 RUN $GOBIN/go version
-RUN $GOROOT1.5/bin/go env 
 RUN gcc -v
