@@ -2,9 +2,7 @@
 
 # Installs via godeb
 # Installs gcc 
-
 # 
-
 FROM centos:latest
 MAINTAINER sndnvaps@gmail.com
 ENV GOPATH /usr/local/lib/go
@@ -17,21 +15,12 @@ RUN yum install -y gcc
 RUN yum install -y git 
 RUN yum install  -y  golang.x86_64
 RUN go env 
-#ENV TEMP_GOBIN /root/go1.4/bin
-#RUN mkdir -p $TEMP_GOBIN 
 RUN whereis go 
-#RUN cd /usr/bin && ln -s go $TEMP_GOBIN/go
-#RUN ls -las $TEMP_GOBIN 
-
 RUN mkdir -p $GOROOT \
 	&& cd $GOROOT \
 	&& git clone https://github.com/golang/go.git .  \
 	&& cd ./src \
 	&& CGO_ENABLED=1 ./make.bash 
-
-
-
-
 
 RUN $GOBIN/go version
 RUN gcc -v
