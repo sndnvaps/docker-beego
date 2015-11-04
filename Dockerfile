@@ -16,7 +16,7 @@ ENV GOROOT_BOOTSTRAP $GOROOT
 RUN yum update -y
 RUN yum install -y gcc
 #RUN yum install -y bzr
-RUN yum install wget 
+RUN yum install -y wget 
 RUN yum install -y git 
 
 ENV GOLANG_VERSION 1.5.1
