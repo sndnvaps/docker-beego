@@ -10,7 +10,8 @@ MAINTAINER sndnvaps@gmail.com
 ENV GOPATH /usr/local/lib/go
 RUN yum update -y
 RUN yum install -y gcc
-RUN yum install -y bazaar
+RUN yum install -y bzr
+RUN yum install -y git 
 RUN yum install  -y golang.x86_64 
 RUN go get launchpad.net/godeb
 RUN /usr/local/lib/go/bin/godeb --help
