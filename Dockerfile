@@ -32,8 +32,6 @@ RUN wget $GOLANG_DOWNLOAD_URL  \
 
 ENV GOPATH /go
 ENV PATH $GOPATH/bin:/usr/local/go/bin:$PATH	
-	
-#RUN yum install  -y  golang.x86_64
 RUN go env 
 RUN whereis go 
 
@@ -42,6 +40,6 @@ RUN mkdir -p $GOROOT1.5 \
 	&& git clone https://github.com/golang/go.git .  \
 	&& cd ./src \
 	&& CGO_ENABLED=1 ./make.bash 
-
+RUN go env 
 RUN $GOBIN/go version
 RUN gcc -v
