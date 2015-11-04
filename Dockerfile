@@ -19,4 +19,4 @@ RUN yum remove -y golang.x86_64
 RUN /usr/local/lib/go/bin/godeb install
 
 RUN go version
-RUN gcc --version 
+RUN gcc -
