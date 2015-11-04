@@ -15,7 +15,7 @@ RUN yum update -y
 RUN yum install -y gcc
 #RUN yum install -y bzr
 RUN yum install -y git 
-RUN yum install  -y --installroot=$GOROOT golang.x86_64
+RUN yum install  -y  golang.x86_64
 #ENV TEMP_GOBIN /root/go1.4/bin
 #RUN mkdir -p $TEMP_GOBIN 
 RUN whereis go 
