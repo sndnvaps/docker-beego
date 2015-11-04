@@ -16,7 +16,7 @@ RUN yum install  -y golang.x86_64
 RUN go get launchpad.net/godeb
 RUN /usr/local/lib/go/bin/godeb --help
 
-RUN yum remove -y golang.x86_64 
+#RUN yum remove -y golang.x86_64 
 
 RUN /usr/local/lib/go/bin/godeb install
 
