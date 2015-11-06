@@ -1,6 +1,7 @@
 # Centos with the latest golang installed
 # Installs gcc 
 # https://storage.googleapis.com/golang/go1.5.1.linux-amd64.tar.gz
+# DockerName: sndnvaps/docker-golang 
 
 FROM centos:latest
 MAINTAINER sndnvaps@gmail.com
