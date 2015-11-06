@@ -1,38 +1,12 @@
-# Centos with the latest golang installed
-# Installs gcc 
-# https://storage.googleapis.com/golang/go1.5.1.linux-amd64.tar.gz
-# DockerName: sndnvaps/docker-golang 
 
-FROM centos:latest
+# DockerName: sndnvaps/docker-golang _8080
+
+FROM sndnvaps/docker-golang
 MAINTAINER sndnvaps@gmail.com
 ENV GOROOT /usr/local/go
-ENV GOROOT1_5 /usr/local/go1_5
-ENV GOBIN $GOROOT/bin 
-ENV GOROOT_BOOTSTRAP $GOROOT
-RUN yum update -y
-RUN yum install -y gcc
-#RUN yum install -y bzr
-RUN yum install -y wget 
-RUN yum install -y git 
 
-ENV GOLANG_VERSION 1.5.1
-ENV GOLANG_TAR_BALL go$GOLANG_VERSION.linux-amd64.tar.gz
-ENV GOLANG_DOWNLOAD_URL  https://storage.googleapis.com/golang/$GOLANG_TAR_BALL
-ENV GOLANG_DOWNLOAD_SHA1 46eecd290d8803887dec718c691cc243f2175fe0
+RUN go get github.com/sndnvaps/goblog
+RUN go get github.com/beego/bee 
 
-RUN wget $GOLANG_DOWNLOAD_URL  \
-	&& echo "$GOLANG_DOWNLOAD_SHA1  $GOLANG_TAR_BALL" | sha1sum -c - \
-	&& tar -C /usr/local -xzf $GOLANG_TAR_BALL \
-	&& rm $GOLANG_TAR_BALL
+EXPOSE 8080 
 
-
-ENV GOPATH /go
-ENV PATH $GOPATH/bin:/usr/local/go/bin:$PATH	
-RUN mkdir -p $GOROOT1_5 \
-	&& cd $GOROOT1_5 \
-	&& git clone https://github.com/golang/go.git .  \
-	&& cd ./src \
-	&& CGO_ENABLED=1 ./make.bash 
-WORKDIR $GOPATH 
-RUN $GOBIN/go version
-RUN gcc -v
