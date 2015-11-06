@@ -1,6 +1,4 @@
 # Centos with the latest golang installed
-
-# Installs via godeb
 # Installs gcc 
 # https://storage.googleapis.com/golang/go1.5.1.linux-amd64.tar.gz
 
@@ -29,14 +27,11 @@ RUN wget $GOLANG_DOWNLOAD_URL  \
 
 ENV GOPATH /go
 ENV PATH $GOPATH/bin:/usr/local/go/bin:$PATH	
-RUN go env 
-RUN whereis go 
-
 RUN mkdir -p $GOROOT1_5 \
 	&& cd $GOROOT1_5 \
 	&& git clone https://github.com/golang/go.git .  \
 	&& cd ./src \
 	&& CGO_ENABLED=1 ./make.bash 
-RUN go env 
+WORKDIR $GOPATH 
 RUN $GOBIN/go version
 RUN gcc -v
